@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package helloworld;
+
+option go_package = "github.com/cwx0117/grpc-gateway-demo/proto/helloworld";
+
+import "google/api/annotations.proto";
+// Buf 官方推荐服务名后面增
+service HelloService {
+  // 打招呼方法
+  rpc SayHello (HelloRequest) returns (HelloReply) {
+    // 这里添加了google.api.http注释
+    option (google.api.http) = {
+      post: "/v1/example/echo"
+      body: "*"
+    };
+  }
+}
+
+// 定义请求的message
+message HelloRequest {
+  string name = 1;
+}
+
+// 定义响应的message
+message HelloReply {
+  string message = 1;
+}
+

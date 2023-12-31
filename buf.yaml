@@ -1,0 +1,13 @@
+version: v1
+name: buf.build/cwx0117/grpc-gateway-demo
+deps:
+  - buf.build/googleapis/googleapis
+lint:
+  use:
+    - DEFAULT
+  except:
+    - PACKAGE_DIRECTORY_MATCH
+    - PACKAGE_VERSION_SUFFIX
+breaking:
+  use:
+    - FILE
